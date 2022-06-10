@@ -1,0 +1,23 @@
+name: Petclinic API tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    timeout-minutes: 60
+    run-on: ubuntu-latest
+    steps:
+      -uses: actions/checkout@v2
+      -uses: actions/setup-node@v2
+       with:
+        node-version: '14'
+      
+      -name: Install dependencies
+       run: npm Install
+
+      -name: Run tests
+       run: npm test
